@@ -57,7 +57,7 @@ git add .
 
 #### a) Diferença entre arquivo "Untracked" e arquivo "Modified":
 * **Untracked (Não rastreado):** É um arquivo novo que acabou de ser criado e que o Git nunca monitorou. Ele não possui nenhum registro histórico anterior no repositório.
-* **Modified (Modificado):** É um arquivo que já foi incluído no repositório anteriormente (já foi comitado ou adicionado antes), mas que sofreu alterações de conteúdo no diretório de trabalho que ainda não foram enviadas para a Staging Area.
+* **Modified (Modificado):** É um arquivo que já foi incluído no repositório anteriormente (já foi comitado ou adicionado antes), mas que ocorreu alterações de conteúdo no diretório de trabalho que ainda não foram enviadas para a Staging Area.
 
 #### b) O que o comando `git diff` mostra:
 O comando `git diff` exibe as diferenças exatas de conteúdo (linha a linha) entre as alterações atuais do Working Directory e a última versão que foi adicionada à Staging Area (ou do último commit). Ele serve para revisar o que foi de fato modificado (linhas removidas representadas por `-` e linhas adicionadas representadas por `+`) antes de preparar o arquivo para commit.
@@ -212,3 +212,52 @@ Fast-forward
  1 file changed, 3 insertions(+)
 ```
 *O que o comando fez:* O `git pull` buscou as alterações mais recentes presentes no repositório remoto (com um `git fetch`) e, como não houve conflitos, as mesclou automaticamente no repositório local (com um `git merge`) na modalidade **Fast-forward**. O arquivo `README.md` local foi atualizado com a seção *"Como Executar"*, mantendo o código local sincronizado com a nuvem.
+
+---
+
+## Parte 2: GitFlow — Fluxo Profissional de Desenvolvimento
+
+### Questão 9: Inicializando o GitFlow
+
+#### a) Instalação do plugin GitFlow:
+No Git for Windows (ambiente de execução local), o GitFlow já vem instalado de maneira integrada por padrão, não necessitando de nenhuma instalação adicional.
+
+#### b) Comando de inicialização executado e saída:
+```bash
+git flow init -d
+```
+*Saída do terminal:*
+```
+Using default branch names.
+
+Which branch should be used for bringing forth production releases?
+   - main
+Branch name for production releases: [main] 
+Branch name for "next release" development: [develop] 
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Bugfix branches? [bugfix/] 
+Release branches? [release/] 
+Hotfix branches? [hotfix/] 
+Support branches? [support/] 
+Version tag prefix? [] 
+Hooks and filters directory? [C:/Users/Yago/OneDrive/Documentos/UNIRV/7° PERÍODO 01.2026/ESW451 - ENGENHARIA DA QUALIDADE E CONFIABILIDADE - SÉRGIO NOVAK/ATIVIDADES/N3/ATIVIDADE DO DIA 11-06/lanchonete-web/.git/hooks]
+```
+
+#### c) Saída do `git branch` e função da branch `develop`:
+*Saída observada:*
+```
+* develop
+  main
+```
+*Função da branch `develop`:* É a branch principal de integração do desenvolvimento. Ela serve para consolidar todas as novas funcionalidades concluídas (features) que serão agregadas na próxima versão de lançamento (release) do produto. Ela reflete o estado mais recente de desenvolvimento ativo e serve como base de nascimento para novas ramificações de feature e release.
+
+#### d) Comando para fazer push da branch develop:
+```bash
+git push -u origin develop
+```
+*Saída do terminal:*
+`branch 'develop' set up to track 'origin/develop'.`
+`To https://github.com/yago-lc02/atividade-git.git`
+` * [new branch]      develop -> develop`
