@@ -28,3 +28,25 @@ git init
 
 #### c) Significado do status "Untracked files":
 O status **"Untracked files"** (arquivos não monitorados / não rastreados) indica que o Git detectou a existência de novos arquivos no diretório de trabalho do projeto, porém eles ainda não foram adicionados à área de preparação (**Staging Area**). O Git não monitorará as alterações feitas nesses arquivos nem os incluirá nos commits futuros até que o comando `git add` seja utilizado para começar a rastreá-los.
+
+---
+
+### Questão 2: Primeiro Commit: Preparando e Salvando
+
+#### a) Mudança após executar `git add README.md` e `git status`:
+*Saída observada no status:* O arquivo `README.md` passou da seção *"Untracked files"* para a seção *"Changes to be committed"* como `new file: README.md`.
+*Explicação:* A mudança indica que o arquivo foi adicionado com sucesso à **Staging Area** (área de preparação). Ele agora está sob o rastreamento do Git e preparado para ser incluído na próxima foto (commit) do repositório. Os demais arquivos (`index.html`, `style.css`, `cardapio.js`, `respostas.md`) permaneceram na seção *"Untracked files"*.
+
+#### b) Comando para adicionar os demais arquivos:
+```bash
+git add .
+```
+
+#### c) Mensagem do commit inicial e hash curto obtido:
+*Mensagem:* `feat: estrutura inicial do projeto`
+*Hash curto exibido:* `21fc1eb`
+
+#### d) Saída e descrição do comando `git log --oneline`:
+*Saída do comando:*
+`21fc1eb feat: estrutura inicial do projeto`
+*Descrição:* O comando exibe o histórico de commits do repositório de forma compacta e linear. Cada linha representa um commit e mostra apenas o hash identificador curto (os primeiros 7 caracteres do SHA-1) e a mensagem descritiva do commit.
