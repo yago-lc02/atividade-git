@@ -70,3 +70,30 @@ git commit -m "feat: adiciona estrutura basica do HTML"
 *Saída do terminal:*
 `[main c016278] feat: adiciona estrutura basica do HTML`
 `1 file changed, 67 insertions(+), 1 deletion(-)`
+
+---
+
+### Questão 4: Histórico de Versões com git log
+
+#### a) Saída completa do `git log` para os commits recentes:
+
+1. **Commit de Estilos CSS:**
+   * **Hash completo:** `9683ce60f43c469196213542e193bc235fff40d5`
+   * **Autor:** Yago Lemes da Cruz <yago.cruz123@gmail.com>
+   * **Data:** Thu Jun 11 20:42:51 2026 -0300
+   * **Mensagem:** `feat: adiciona estilos CSS basicos para a lanchonete`
+
+2. **Commit do Script JS:**
+   * **Hash completo:** `12dc0f3bde50eb5837fdd71dcf29ad3cfa34ccdd`
+   * **Autor:** Yago Lemes da Cruz <yago.cruz123@gmail.com>
+   * **Data:** Thu Jun 11 20:43:04 2026 -0300
+   * **Mensagem:** `feat: adiciona interatividade e cliques nos botoes de pedido no JS`
+
+#### b) Representação do símbolo `*` na saída do `git log --oneline --graph`:
+O símbolo `*` representa um **commit (nó)** na linha do tempo ou histórico visual do repositório. O `--graph` desenha a estrutura do histórico mostrando branches e merges, e cada `*` indica que um commit foi gerado naquela posição específica da ramificação.
+
+#### c) Importância de mensagens de commit claras e descritivas:
+Mensagens de commit claras e descritivas são fundamentais em um projeto profissional pois:
+1. **Facilitam a Colaboração:** Permitem que outros desenvolvedores da equipe entendam o propósito e o impacto de cada alteração sem precisar analisar todo o código modificado.
+2. **Histórico Rastreável:** Ajudam a localizar rapidamente em qual commit uma funcionalidade foi inserida ou onde um determinado bug pode ter sido introduzido.
+3. **Automatização e Auditoria:** Simplificam a geração automática de notas de lançamento (Release Notes) e auxiliam em auditorias de qualidade ou segurança do software.
