@@ -50,3 +50,23 @@ git add .
 *Saída do comando:*
 `21fc1eb feat: estrutura inicial do projeto`
 *Descrição:* O comando exibe o histórico de commits do repositório de forma compacta e linear. Cada linha representa um commit e mostra apenas o hash identificador curto (os primeiros 7 caracteres do SHA-1) e a mensagem descritiva do commit.
+
+---
+
+### Questão 3: Modificando e Rastreando Arquivos
+
+#### a) Diferença entre arquivo "Untracked" e arquivo "Modified":
+* **Untracked (Não rastreado):** É um arquivo novo que acabou de ser criado e que o Git nunca monitorou. Ele não possui nenhum registro histórico anterior no repositório.
+* **Modified (Modificado):** É um arquivo que já foi incluído no repositório anteriormente (já foi comitado ou adicionado antes), mas que sofreu alterações de conteúdo no diretório de trabalho que ainda não foram enviadas para a Staging Area.
+
+#### b) O que o comando `git diff` mostra:
+O comando `git diff` exibe as diferenças exatas de conteúdo (linha a linha) entre as alterações atuais do Working Directory e a última versão que foi adicionada à Staging Area (ou do último commit). Ele serve para revisar o que foi de fato modificado (linhas removidas representadas por `-` e linhas adicionadas representadas por `+`) antes de preparar o arquivo para commit.
+
+#### c) Comandos executados para commit:
+```bash
+git add index.html
+git commit -m "feat: adiciona estrutura basica do HTML"
+```
+*Saída do terminal:*
+`[main c016278] feat: adiciona estrutura basica do HTML`
+`1 file changed, 67 insertions(+), 1 deletion(-)`
