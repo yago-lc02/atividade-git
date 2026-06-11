@@ -112,7 +112,7 @@ O arquivo `promocoes.html` foi criado com a estrutura do wireframe e o commit fo
 `[feature/pagina-promocoes d9a659b] feat: adiciona pagina de promocoes e estilos correspondentes`
 
 #### c) Significado do asterisco (`*`) na saída do `git branch`:
-O asterisco (`*`) exibido na cor verde indica qual é a **branch ativa/corrente** no momento (a ramificação sobre a qual você está trabalhando atualmente no diretório de trabalho). Qualquer novo commit realizado será adicionado a esta branch com o asterisco.
+O asterisco (`*`) exibido na cor verde indica qual é a **branch activa/corrente** no momento (a ramificação sobre a qual você está trabalhando atualmente no diretório de trabalho). Qualquer novo commit realizado será adicionado a esta branch com o asterisco.
 
 #### d) Comportamento do arquivo `promocoes.html` ao voltar para a branch `main`:
 *O que aconteceu:* O arquivo `promocoes.html` desapareceu da pasta física do projeto local.
@@ -156,3 +156,27 @@ Merge made by the 'ort' strategy.
 git branch -d feature/pagina-promocoes
 ```
 *Por que é uma boa prática:* Deletar branches de funcionalidades concluídas é uma excelente prática para manter o repositório organizado, livre de ramificações obsoletas, facilitando a navegação de outros desenvolvedores e evitando commits acidentais em branches antigas que já foram integradas à linha principal.
+
+---
+
+### Questão 7: Desfazendo Erros com git revert
+
+#### a) Alteração errada proposital e commit:
+*Alteração no `style.css`:* Adicionado `background: pink;` ao body.
+*Commit realizado:* `f2db83d feat: adiciona cor de fundo rosa no body`
+
+#### b) Hash do commit indesejado identificado com `git log --oneline`:
+*Hash curto:* `f2db83d`
+
+#### c) Comando para reverter o commit e diferença técnica entre revert e reset:
+*Comando executado:*
+```bash
+git revert f2db83d --no-edit
+```
+*Saída do terminal:*
+`[main f321ff4] Revert "feat: adiciona cor de fundo rosa no body"`
+`1 file changed, 1 deletion(-)`
+
+*Diferença entre `git revert` e `git reset`:*
+* **`git revert`:** Cria um **novo commit** no histórico que faz exatamente a alteração inversa do commit alvo, neutralizando seu efeito. Ele **preserva o histórico original** intacto, incluindo o commit com erro e o commit de correção. É a estratégia ideal e segura para repositórios compartilhados e ramificações públicas, pois não reescreve a história.
+* **`git reset`:** Move o ponteiro da branch atual de volta para um commit específico do passado, **reescrevendo o histórico** (descartando os commits posteriores a esse ponto). É perigoso em repositórios remotos compartilhados, pois quebra a sincronia para outros desenvolvedores que já possuíam aqueles commits locais.
