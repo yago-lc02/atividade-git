@@ -19,6 +19,7 @@
 body {
     font-family: 'Outfit', sans-serif;
     background-color: var(--bg-dark);
+    background: pink; /* Alteração errada proposital */
     color: var(--text-white);
     line-height: 1.6;
 }
