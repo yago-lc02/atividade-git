@@ -97,3 +97,23 @@ Mensagens de commit claras e descritivas são fundamentais em um projeto profiss
 1. **Facilitam a Colaboração:** Permitem que outros desenvolvedores da equipe entendam o propósito e o impacto de cada alteração sem precisar analisar todo o código modificado.
 2. **Histórico Rastreável:** Ajudam a localizar rapidamente em qual commit uma funcionalidade foi inserida ou onde um determinado bug pode ter sido introduzido.
 3. **Automatização e Auditoria:** Simplificam a geração automática de notas de lançamento (Release Notes) e auxiliam em auditorias de qualidade ou segurança do software.
+
+---
+
+### Questão 5: Trabalhando com Branches: Nova Funcionalidade
+
+#### a) Comando para criar e trocar para a nova branch:
+```bash
+git checkout -b feature/pagina-promocoes
+```
+
+#### b) Arquivo criado e commitado na branch de feature:
+O arquivo `promocoes.html` foi criado com a estrutura do wireframe e o commit foi executado com sucesso:
+`[feature/pagina-promocoes d9a659b] feat: adiciona pagina de promocoes e estilos correspondentes`
+
+#### c) Significado do asterisco (`*`) na saída do `git branch`:
+O asterisco (`*`) exibido na cor verde indica qual é a **branch ativa/corrente** no momento (a ramificação sobre a qual você está trabalhando atualmente no diretório de trabalho). Qualquer novo commit realizado será adicionado a esta branch com o asterisco.
+
+#### d) Comportamento do arquivo `promocoes.html` ao voltar para a branch `main`:
+*O que aconteceu:* O arquivo `promocoes.html` desapareceu da pasta física do projeto local.
+*Por quê:* Ao executar o comando `git checkout main`, o Git atualiza o diretório de trabalho do seu sistema operacional para corresponder exatamente ao último estado da branch `main`. Como o arquivo `promocoes.html` foi criado e comitado exclusivamente na branch `feature/pagina-promocoes`, ele ainda não existe no histórico da branch `main`, fazendo com que ele não apareça enquanto a `main` estiver ativa.
