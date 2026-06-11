@@ -117,3 +117,42 @@ O asterisco (`*`) exibido na cor verde indica qual é a **branch ativa/corrente*
 #### d) Comportamento do arquivo `promocoes.html` ao voltar para a branch `main`:
 *O que aconteceu:* O arquivo `promocoes.html` desapareceu da pasta física do projeto local.
 *Por quê:* Ao executar o comando `git checkout main`, o Git atualiza o diretório de trabalho do seu sistema operacional para corresponder exatamente ao último estado da branch `main`. Como o arquivo `promocoes.html` foi criado e comitado exclusivamente na branch `feature/pagina-promocoes`, ele ainda não existe no histórico da branch `main`, fazendo com que ele não apareça enquanto a `main` estiver ativa.
+
+---
+
+### Questão 6: Integrando Branches com git merge
+
+#### a) Comando executado para o merge:
+```bash
+git merge feature/pagina-promocoes -m "merge: integra a pagina de promocoes na branch principal"
+```
+
+#### b) Saída do terminal e estratégia de merge identificada:
+*Saída do terminal:*
+```
+Merge made by the 'ort' strategy.
+ promocoes.html | 108 ++++++++++++++++++++++++++++++++++++++++++
+ style.css      | 147 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 255 insertions(+)
+ create mode 100644 promocoes.html
+```
+*Estratégia utilizada:* O Git utilizou a estratégia **'ort'** (que significa *"Ostensibly Recursive's Twin"*, o algoritmo padrão moderno de merge de 3 vias a partir da versão 2.34 do Git). Ela é aplicada quando há divergência no histórico das branches mescladas (ambas possuíam commits novos após a ramificação).
+
+#### c) Saída do `git log --oneline --graph` e descrição visual:
+*Saída do comando:*
+```
+*   dc699db merge: integra a pagina de promocoes na branch principal
+|\  
+| * d9a659b feat: adiciona pagina de promocoes e estilos correspondentes
+* | 1d5cae1 docs: respostas da questao 5
+|/  
+* 8e44c94 docs: respostas da questao 4
+```
+*Descrição visual:* O histórico mostra duas linhas de desenvolvimento paralelas que se iniciaram a partir do commit `8e44c94`. A linha da esquerda (com o commit `1d5cae1`) representa a branch `main` e a linha da direita (com o commit `d9a659b`) representa a branch `feature/pagina-promocoes`. No topo (`dc699db`), as duas linhas se convergem novamente no commit de merge, demonstrando a integração das ramificações.
+
+#### d) Comando para deletar a branch de feature e motivo de ser uma boa prática:
+*Comando executado:*
+```bash
+git branch -d feature/pagina-promocoes
+```
+*Por que é uma boa prática:* Deletar branches de funcionalidades concluídas é uma excelente prática para manter o repositório organizado, livre de ramificações obsoletas, facilitando a navegação de outros desenvolvedores e evitando commits acidentais em branches antigas que já foram integradas à linha principal.
