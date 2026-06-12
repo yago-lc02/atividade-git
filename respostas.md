@@ -212,3 +212,86 @@ Fast-forward
  1 file changed, 3 insertions(+)
 ```
 *O que o comando fez:* O `git pull` buscou as alterações mais recentes presentes no repositório remoto (com um `git fetch`) e, como não houve conflitos, as mesclou automaticamente no repositório local (com um `git merge`) na modalidade **Fast-forward**. O arquivo `README.md` local foi atualizado com a seção *"Como Executar"*, mantendo o código local sincronizado com a nuvem.
+
+---
+
+## Parte 2: GitFlow — Fluxo Profissional de Desenvolvimento
+
+### Questão 9: Inicializando o GitFlow
+
+#### a) Instalação do plugin GitFlow:
+No Git for Windows (ambiente de execução local), o GitFlow já vem instalado de maneira integrada por padrão, não necessitando de nenhuma instalação adicional.
+
+#### b) Comando de inicialização executado e saída:
+```bash
+git flow init -d
+```
+*Saída do terminal:*
+```
+Using default branch names.
+
+Which branch should be used for bringing forth production releases?
+   - main
+Branch name for production releases: [main] 
+Branch name for "next release" development: [develop] 
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Bugfix branches? [bugfix/] 
+Release branches? [release/] 
+Hotfix branches? [hotfix/] 
+Support branches? [support/] 
+Version tag prefix? [] 
+Hooks and filters directory? [C:/Users/Yago/OneDrive/Documentos/UNIRV/7° PERÍODO 01.2026/ESW451 - ENGENHARIA DA QUALIDADE E CONFIABILIDADE - SÉRGIO NOVAK/ATIVIDADES/N3/ATIVIDADE DO DIA 11-06/lanchonete-web/.git/hooks]
+```
+
+#### c) Saída do `git branch` e função da branch `develop`:
+*Saída observada:*
+```
+* develop
+  main
+```
+*Função da branch `develop`:* É a branch principal de integração do desenvolvimento. Ela serve para consolidar todas as novas funcionalidades concluídas (features) que serão agregadas na próxima versão de lançamento (release) do produto. Ela reflete o estado mais recente de desenvolvimento ativo e serve como base de nascimento para novas ramificações de feature e release.
+
+#### d) Comando para fazer push da branch develop:
+```bash
+git push -u origin develop
+```
+*Saída do terminal:*
+`branch 'develop' set up to track 'origin/develop'.`
+`To https://github.com/yago-lc02/atividade-git.git`
+` * [new branch]      develop -> develop`
+
+---
+
+### Questão 10: Ciclo de Feature: Novo Cardápio Online
+
+#### a) Comando para iniciar a feature e branch resultante:
+*Comando executado:*
+```bash
+git flow feature start cardapio-interativo
+```
+*Branch resultante:* `feature/cardapio-interativo`
+
+#### b) Commits descritivos efetuados durante a feature:
+1. `39013b5 feat: adiciona array de itens do cardapio no JS`
+2. `5f979e3 feat: implementa renderizacao dinamica do cardapio no DOM`
+
+#### c) Ações automáticas do `git flow feature finish` e branch destino:
+*Ações automáticas:*
+1. Trocou a branch atual local de volta para a branch `develop`.
+2. Mesclou a branch de feature `feature/cardapio-interativo` na branch `develop`.
+3. Deletou a branch local de feature `feature/cardapio-interativo`.
+*Branch destino:* A branch **`develop`**.
+
+#### d) Saída do log e descrição do fluxo de branches:
+*Saída do comando `git log --oneline --graph`:*
+```
+*   0d37542 Merge branch 'feature/cardapio-interativo' into develop
+|\  
+| * 5f979e3 feat: implementa renderizacao dinamica do cardapio no DOM
+| * 39013b5 feat: adiciona array de itens do cardapio no JS
+|/  
+* b0f931b docs: respostas da questao 9
+```
+*Descrição do fluxo:* O histórico visual em grafo mostra que a partir da branch `develop` (no commit `b0f931b`) abriu-se uma ramificação de feature (à direita) contendo os commits de desenvolvimento `39013b5` e `5f979e3`. No commit `0d37542` (Merge commit), essa linha paralela foi reunida novamente com a branch `develop`, incorporando de forma segura as novas funcionalidades de cardápio ao fluxo de desenvolvimento contínuo.
