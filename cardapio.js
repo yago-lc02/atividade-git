@@ -1,5 +1,30 @@
 // Lógica do Cardápio da Lanchonete do Bairro
 
+// Array de itens do cardápio (Modelo de Dados)
+const itensCardapio = [
+    {
+        id: 1,
+        nome: "X-Burguer",
+        preco: 18.90,
+        categoria: "Lanches",
+        icone: "🍔"
+    },
+    {
+        id: 2,
+        nome: "X-Bacon",
+        preco: 21.90,
+        categoria: "Lanches",
+        icone: "🥓"
+    },
+    {
+        id: 3,
+        nome: "Combo Família",
+        preco: 45.90,
+        categoria: "Combos",
+        icone: "🍟"
+    }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Lanchonete do Bairro inicializada com sucesso!');
     
