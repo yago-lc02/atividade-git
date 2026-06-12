@@ -57,7 +57,7 @@ git add .
 
 #### a) Diferença entre arquivo "Untracked" e arquivo "Modified":
 * **Untracked (Não rastreado):** É um arquivo novo que acabou de ser criado e que o Git nunca monitorou. Ele não possui nenhum registro histórico anterior no repositório.
-* **Modified (Modificado):** É um arquivo que já foi incluído no repositório anteriormente (já foi comitado ou adicionado antes), mas que ocorreu alterações de conteúdo no diretório de trabalho que ainda não foram enviadas para a Staging Area.
+* **Modified (Modificado):** É um arquivo que já foi incluído no repositório anteriormente (já foi comitado ou adicionado antes), mas que sofreu alterações de conteúdo no diretório de trabalho que ainda não foram enviadas para a Staging Area.
 
 #### b) O que o comando `git diff` mostra:
 O comando `git diff` exibe as diferenças exatas de conteúdo (linha a linha) entre as alterações atuais do Working Directory e a última versão que foi adicionada à Staging Area (ou do último commit). Ele serve para revisar o que foi de fato modificado (linhas removidas representadas por `-` e linhas adicionadas representadas por `+`) antes de preparar o arquivo para commit.
@@ -261,3 +261,37 @@ git push -u origin develop
 `branch 'develop' set up to track 'origin/develop'.`
 `To https://github.com/yago-lc02/atividade-git.git`
 ` * [new branch]      develop -> develop`
+
+---
+
+### Questão 10: Ciclo de Feature: Novo Cardápio Online
+
+#### a) Comando para iniciar a feature e branch resultante:
+*Comando executado:*
+```bash
+git flow feature start cardapio-interativo
+```
+*Branch resultante:* `feature/cardapio-interativo`
+
+#### b) Commits descritivos efetuados durante a feature:
+1. `39013b5 feat: adiciona array de itens do cardapio no JS`
+2. `5f979e3 feat: implementa renderizacao dinamica do cardapio no DOM`
+
+#### c) Ações automáticas do `git flow feature finish` e branch destino:
+*Ações automáticas:*
+1. Trocou a branch atual local de volta para a branch `develop`.
+2. Mesclou a branch de feature `feature/cardapio-interativo` na branch `develop`.
+3. Deletou a branch local de feature `feature/cardapio-interativo`.
+*Branch destino:* A branch **`develop`**.
+
+#### d) Saída do log e descrição do fluxo de branches:
+*Saída do comando `git log --oneline --graph`:*
+```
+*   0d37542 Merge branch 'feature/cardapio-interativo' into develop
+|\  
+| * 5f979e3 feat: implementa renderizacao dinamica do cardapio no DOM
+| * 39013b5 feat: adiciona array de itens do cardapio no JS
+|/  
+* b0f931b docs: respostas da questao 9
+```
+*Descrição do fluxo:* O histórico visual em grafo mostra que a partir da branch `develop` (no commit `b0f931b`) abriu-se uma ramificação de feature (à direita) contendo os commits de desenvolvimento `39013b5` e `5f979e3`. No commit `0d37542` (Merge commit), essa linha paralela foi reunida novamente com a branch `develop`, incorporando de forma segura as novas funcionalidades de cardápio ao fluxo de desenvolvimento contínuo.
