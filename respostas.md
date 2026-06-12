@@ -295,3 +295,35 @@ git flow feature start cardapio-interativo
 * b0f931b docs: respostas da questao 9
 ```
 *Descrição do fluxo:* O histórico visual em grafo mostra que a partir da branch `develop` (no commit `b0f931b`) abriu-se uma ramificação de feature (à direita) contendo os commits de desenvolvimento `39013b5` e `5f979e3`. No commit `0d37542` (Merge commit), essa linha paralela foi reunida novamente com a branch `develop`, incorporando de forma segura as novas funcionalidades de cardápio ao fluxo de desenvolvimento contínuo.
+
+---
+
+### Questão 11: Ciclo de Release: Preparando a Versão 1.0
+
+#### a) Comando para iniciar a release, branch criada e ramificação de origem:
+*Comando executado:*
+```bash
+git flow release start 1.0.0
+```
+*Branch criada:* `release/1.0.0`
+*Origem:* Ela nasce a partir da branch **`develop`**.
+
+#### b) Commits e alterações feitas na branch de release:
+O arquivo `README.md` foi atualizado adicionando a estrutura detalhada de arquivos do projeto e o footer de `index.html` foi ajustado para exibir o ano de 2026.
+*Commit realizado:* `ffb73a8 chore: prepara release v1.0.0`
+
+#### c) O que ocorreu com as branches "main" e "develop" ao finalizar a release:
+*Comando executado:*
+```bash
+git flow release finish 1.0.0 -m "Release 1.0.0"
+```
+*Ações resultantes:*
+1. O GitFlow mesclou o conteúdo da branch `release/1.0.0` na branch principal **`main`**.
+2. Criou uma **tag** de versão chamada **`1.0.0`** associada a essa mesclagem na branch `main`.
+3. Mesclou as alterações da release de volta na branch **`develop`** (back-merge), garantindo que os ajustes feitos na preparação do lançamento estejam integrados no desenvolvimento futuro.
+4. **Deletou** a branch local `release/1.0.0`.
+5. Retornou o desenvolvedor para a branch ativa **`develop`**.
+
+#### d) Saída do `git tag` e função de uma tag no GitFlow:
+*Saída do comando:* `1.0.0`
+*Função de uma tag no GitFlow:* Uma tag é um marcador permanente e imutável que aponta para um commit específico do histórico (geralmente commits de merge na branch `main`). Sua função no GitFlow é registrar de forma definitiva os marcos de lançamento do software (releases), permitindo que qualquer desenvolvedor acesse a versão exata do software em produção no futuro de maneira simples e inequívoca, garantindo a rastreabilidade e auditoria da versão.
