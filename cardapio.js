@@ -25,16 +25,32 @@ const itensCardapio = [
     }
 ];
 
+// Função para renderizar os itens na tela
+function renderizarCardapio() {
+    const grid = document.getElementById('cardapio-grid');
+    if (!grid) return;
+
+    grid.innerHTML = ''; // Limpa o conteúdo estático
+
+    itensCardapio.forEach(item => {
+        const itemHTML = `
+            <div class="cardapio-item">
+                <div class="item-img-placeholder">${item.icone}</div>
+                <h3>${item.nome}</h3>
+                <p class="price">R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
+                <button class="btn-order" onclick="fazerPedido('${item.nome}')">Pedir</button>
+            </div>
+        `;
+        grid.innerHTML += itemHTML;
+    });
+}
+
+// Função para processar o pedido
+function fazerPedido(nomeItem) {
+    alert(`Obrigado pelo seu pedido! Preparando o seu delicioso ${nomeItem}.`);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Lanchonete do Bairro inicializada com sucesso!');
-    
-    // Adiciona evento de clique aos botões de pedir
-    const orderButtons = document.querySelectorAll('.btn-order');
-    orderButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const itemCard = e.target.closest('.cardapio-item');
-            const itemName = itemCard.querySelector('h3').textContent;
-            alert(`Obrigado pelo seu pedido! Preparando o seu delicioso ${itemName}.`);
-        });
-    });
+    renderizarCardapio();
 });
