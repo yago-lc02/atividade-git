@@ -148,7 +148,7 @@ Merge made by the 'ort' strategy.
 |/  
 * 8e44c94 docs: respostas da questao 4
 ```
-*Descrição visual:* O histórico mostra duas linhas de desenvolvimento paralelas que se iniciaram a partir do commit `8e44c94`. A linha da esquerda (com o commit `1d5cae1`) representa a branch `main` e a linha da direita (com o commit `d9a659b`) representa a branch `feature/pagina-promocoes`. No topo (`dc699db`), as duas linhas se convergem novamente no commit de merge, demonstrando a integração das ramificações.
+*Descrição visual:* O histórico mostra duas lines de desenvolvimento paralelas que se iniciaram a partir do commit `8e44c94`. A linha da esquerda (com o commit `1d5cae1`) representa a branch `main` e a linha da direita (com o commit `d9a659b`) representa a branch `feature/pagina-promocoes`. No topo (`dc699db`), as duas linhas se convergem novamente no commit de merge, demonstrando a integração das ramificações.
 
 #### d) Comando para deletar a branch de feature e motivo de ser uma boa prática:
 *Comando executado:*
@@ -355,3 +355,69 @@ git flow hotfix finish correcao-titulo -m "Hotfix 1.0.1"
 #### d) Número de versão correto segundo o Semantic Versioning (SemVer) e justificativa:
 *Número da versão:* **`1.0.1`**
 *Justificativa:* De acordo com o SemVer (`MAIOR.MENOR.CORREÇÃO`), incrementa-se o número de **CORREÇÃO (Patch)** quando realizamos correções de bugs de forma retrocompatível (ou seja, que não quebram o sistema nem adicionam novas funções). Como o hotfix apenas corrigiu a digitação incorreta do título da página principal, sem alterar a API ou inserir novas funcionalidades, a versão evolui de `1.0.0` para `1.0.1`.
+
+---
+
+### Questão 13: Reflexão Final: GitFlow na Prática
+
+#### a) Diagrama completo do histórico de branches (Mermaid):
+
+```mermaid
+gitGraph
+    commit id: "feat: estrutura inicial"
+    commit id: "docs: resp q2"
+    commit id: "feat: HTML"
+    commit id: "docs: resp q3"
+    commit id: "feat: CSS"
+    commit id: "feat: JS"
+    commit id: "docs: resp q4"
+    branch feature-pagina-promocoes
+    checkout feature-pagina-promocoes
+    commit id: "feat: promocoes"
+    checkout main
+    commit id: "docs: resp q5"
+    merge feature-pagina-promocoes
+    commit id: "docs: resp q6"
+    commit id: "err: background-pink"
+    commit id: "revert err"
+    commit id: "docs: resp q7"
+    commit id: "remote commit"
+    commit id: "docs: resp q8"
+    branch develop
+    checkout develop
+    commit id: "docs: resp q9"
+    branch feature-cardapio-interativo
+    checkout feature-cardapio-interativo
+    commit id: "feat: cardapio array"
+    commit id: "feat: render logic"
+    checkout develop
+    merge feature-cardapio-interativo
+    commit id: "docs: resp q10"
+    branch release-1.0.0
+    checkout release-1.0.0
+    commit id: "chore: prep v1.0.0"
+    checkout main
+    merge release-1.0.0 tag: "1.0.0"
+    checkout develop
+    merge release-1.0.0
+    commit id: "docs: resp q11"
+    checkout main
+    branch hotfix-correcao-titulo
+    checkout hotfix-correcao-titulo
+    commit id: "fix: corrige titulo"
+    checkout main
+    merge hotfix-correcao-titulo tag: "correcao-titulo"
+    checkout develop
+    merge hotfix-correcao-titulo
+    commit id: "docs: resp q12"
+```
+
+#### b) Indicabilidade do GitFlow nos projetos:
+* **Altamente Indicado:** Projetos de software de médio a grande porte, com equipes de desenvolvimento estruturadas (múltiplas pessoas trabalhando em paralelo), onde os lançamentos são feitos de forma programada (ciclos de release estruturados) e onde há necessidade rígida de versionamento e suporte a versões anteriores em produção. Ele oferece segurança, isolamento e ordem.
+* **Desnecessariamente Complexo:** Projetos pequenos, com poucos desenvolvedores (ou desenvolvedor único) ou em ambientes com cultura de Deploy Contínuo (Continuous Deployment), onde cada nova alteração aprovada entra em produção de forma imediata (CI/CD rápido). Nesses casos, o GitFlow adiciona uma burocracia de criação e fusão de branches (`develop`, `feature`, `release`, `main`) que reduz a velocidade de entrega sem agregar benefícios proporcionais. Fluxos como o **GitHub Flow** seriam mais produtivos.
+
+#### c) Comparação do histórico com e sem GitFlow:
+* **Sem GitFlow (Questões 1–8):** Histórico linear diretamente focado na branch principal `main`.
+* **Com GitFlow (Questões 9–13):** Histórico estruturado em ramificações paralelas com papéis e tempos de vida bem definidos (`develop`, `main`, `feature/*`, `release/*`, `hotfix/*`).
+* **Vantagem Percebida do GitFlow:** Separação rígida de responsabilidades. A branch de produção (`main`) é mantida intocada e sempre estável, novas funcionalidades são testadas em isolamento total, e a preparação de uma nova versão (`release`) não bloqueia o início de novos desenvolvimentos na branch `develop`.
+* **Desvantagem Percebida do GitFlow:** Excesso de burocracia e overhead operacional. Para uma alteração simples ou funcionalidade pequena, o desenvolvedor precisa criar a branch de feature, codificar, finalizar a feature (gerando merge), depois criar release, finalizar release (gerando mais dois merges) e realizar tags. Isso aumenta o risco de conflitos de merge cruzados e exige disciplina rigorosa de toda a equipe.
