@@ -1,25 +1,28 @@
-// Lógica do Cardápio da Lanchonete do Bairro
+// Lógica do Cardápio - Beco do Hambúrguer
 
 // Array de itens do cardápio (Modelo de Dados)
 const itensCardapio = [
     {
         id: 1,
-        nome: "X-Burguer",
+        nome: "Beco Burguer",
+        descricao: "Nosso clássico. Blend bovino de 150g grelhado no fogo, cheddar derretido e maionese defumada de bacon no pão brioche macio.",
         preco: 18.90,
         categoria: "Lanches",
         icone: "🍔"
     },
     {
         id: 2,
-        nome: "X-Bacon",
-        preco: 21.90,
+        nome: "Duplo Cheddar Smash",
+        descricao: "Para os fortes. Dois smash blends de 80g na chapa bem prensados, cheddar duplo cremoso e picles artesanal da casa.",
+        preco: 24.90,
         categoria: "Lanches",
         icone: "🥓"
     },
     {
         id: 3,
-        nome: "Combo Família",
-        preco: 45.90,
+        nome: "Beco Especial (Combo)",
+        descricao: "O campeão de vendas. Beco Burguer acompanhado de batatas fritas rústicas salpicadas de páprica e refrigerante lata gelado.",
+        preco: 34.90,
         categoria: "Combos",
         icone: "🍟"
     }
@@ -37,6 +40,7 @@ function renderizarCardapio() {
             <div class="cardapio-item">
                 <div class="item-img-placeholder">${item.icone}</div>
                 <h3>${item.nome}</h3>
+                <p class="description">${item.descricao}</p>
                 <p class="price">R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
                 <button class="btn-order" onclick="fazerPedido('${item.nome}')">Pedir</button>
             </div>
@@ -51,6 +55,6 @@ function fazerPedido(nomeItem) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Lanchonete do Bairro inicializada com sucesso!');
+    console.log('Beco do Hambúrguer inicializado com sucesso!');
     renderizarCardapio();
 });

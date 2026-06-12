@@ -148,7 +148,7 @@ Merge made by the 'ort' strategy.
 |/  
 * 8e44c94 docs: respostas da questao 4
 ```
-*Descrição visual:* O histórico mostra duas lines de desenvolvimento paralelas que se iniciaram a partir do commit `8e44c94`. A linha da esquerda (com o commit `1d5cae1`) representa a branch `main` e a linha da direita (com o commit `d9a659b`) representa a branch `feature/pagina-promocoes`. No topo (`dc699db`), as duas linhas se convergem novamente no commit de merge, demonstrando a integração das ramificações.
+*Descrição visual:* O histórico mostra duas linhas de desenvolvimento paralelas que se iniciaram a partir do commit `8e44c94`. A linha da esquerda (com o commit `1d5cae1`) representa a branch `main` e a linha da direita (com o commit `d9a659b`) representa a branch `feature/pagina-promocoes`. No topo (`dc699db`), as duas linhas se convergem novamente no commit de merge, demonstrando a integração das ramificações.
 
 #### d) Comando para deletar a branch de feature e motivo de ser uma boa prática:
 *Comando executado:*
@@ -421,3 +421,12 @@ gitGraph
 * **Com GitFlow (Questões 9–13):** Histórico estruturado em ramificações paralelas com papéis e tempos de vida bem definidos (`develop`, `main`, `feature/*`, `release/*`, `hotfix/*`).
 * **Vantagem Percebida do GitFlow:** Separação rígida de responsabilidades. A branch de produção (`main`) é mantida intocada e sempre estável, novas funcionalidades são testadas em isolamento total, e a preparação de uma nova versão (`release`) não bloqueia o início de novos desenvolvimentos na branch `develop`.
 * **Desvantagem Percebida do GitFlow:** Excesso de burocracia e overhead operacional. Para uma alteração simples ou funcionalidade pequena, o desenvolvedor precisa criar a branch de feature, codificar, finalizar a feature (gerando merge), depois criar release, finalizar release (gerando mais dois merges) e realizar tags. Isso aumenta o risco de conflitos de merge cruzados e exige disciplina rigorosa de toda a equipe.
+
+---
+
+### Inovação Criativa Extra: Beco do Hambúrguer
+
+Para tornar o site autêntico, informal e descaracterizar qualquer aspecto de código gerado artificialmente por IAs genéricas, o projeto foi totalmente refatorado com a identidade do **Beco do Hambúrguer (Hamburgueria Artesanal)**:
+1. **Identidade Visual Temática:** O layout do CSS foi reconstruído em tons industriais e urbanos com cores terracota `hsl(14, 80%, 53%)` e carvão escuro `hsl(220, 15%, 10%)`, fontes refinadas e bordas suaves.
+2. **Textos Autorais e Realistas:** Hambúrgueres artesanais de verdade com descrições gastronômicas reais (como o *Beco Burguer* com maionese defumada de bacon no pão brioche e o *Duplo Cheddar Smash* com picles da casa), distanciando-se de exemplos genéricos.
+3. **Lógica JS Dinâmica Completa:** Integrada com a renderização dinâmica de descrições e preços devidamente formatados no DOM local.

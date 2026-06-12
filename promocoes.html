@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promoções - Lanchonete do Bairro</title>
+    <title>Promoções - Beco do Hambúrguer</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">Lanchonete do Bairro</div>
+            <div class="logo">Beco do Hambúrguer</div>
             <ul class="nav-links">
                 <li><a href="index.html">Início</a></li>
                 <li><a href="index.html#cardapio">Cardápio</a></li>
@@ -22,19 +22,19 @@
 
     <main class="promocoes-container">
         <div class="section-header" style="margin-top: 3rem;">
-            <h2>Promoções do Dia</h2>
-            <p>Aproveite nossos descontos especiais por tempo limitado!</p>
+            <h2>Promoções da Rodada</h2>
+            <p>Se liga nos descontos especiais que preparamos para hoje!</p>
         </div>
 
         <div class="promocoes-layout">
             <!-- Sidebar de Categorias -->
             <aside class="categorias-sidebar">
-                <h3>Categorias</h3>
+                <h3>Filtrar Beco</h3>
                 <form id="categorias-form">
                     <label class="checkbox-container">
                         <input type="checkbox" id="cat-lanches" checked>
                         <span class="checkmark"></span>
-                        Lanches
+                        Burguers
                     </label>
                     <label class="checkbox-container">
                         <input type="checkbox" id="cat-bebidas" checked>
@@ -44,7 +44,7 @@
                     <label class="checkbox-container">
                         <input type="checkbox" id="cat-combos" checked>
                         <span class="checkmark"></span>
-                        Combos
+                        Combos do Beco
                     </label>
                     <label class="checkbox-container">
                         <input type="checkbox" id="cat-sobremesas" checked>
@@ -59,29 +59,10 @@
                 <div class="cardapio-item promocao-item">
                     <div class="tag-promocao">PROMO</div>
                     <div class="item-img-placeholder">🍔🥓</div>
-                    <h3>Combo X-Bacon</h3>
-                    <p class="price-original">De: R$ 25,00</p>
-                    <p class="price">Por: R$ 18,90</p>
-                    <p class="valido">Válido até: 30/06</p>
-                    <button class="btn-order">Aproveitar</button>
-                </div>
-
-                <div class="cardapio-item promocao-item">
-                    <div class="tag-promocao">PROMO</div>
-                    <div class="item-img-placeholder">🍗</div>
-                    <h3>Frango Grelhado</h3>
-                    <p class="price-original">De: R$ 20,00</p>
-                    <p class="price">Por: R$ 14,90</p>
-                    <p class="valido">Válido até: 30/06</p>
-                    <button class="btn-order">Aproveitar</button>
-                </div>
-
-                <div class="cardapio-item promocao-item">
-                    <div class="tag-promocao">PROMO</div>
-                    <div class="item-img-placeholder">🥤🍦</div>
-                    <h3>Milkshake 500ml</h3>
-                    <p class="price-original">De: R$ 15,00</p>
-                    <p class="price">Por: R$ 10,90</p>
+                    <h3>Combo Duplo Cheddar</h3>
+                    <p class="description">Nosso Duplo Cheddar Smash + Batata Individual + Refri Lata.</p>
+                    <p class="price-original">De: R$ 32,00</p>
+                    <p class="price">Por: R$ 24,90</p>
                     <p class="valido">Válido até: 30/06</p>
                     <button class="btn-order">Aproveitar</button>
                 </div>
@@ -89,9 +70,32 @@
                 <div class="cardapio-item promocao-item">
                     <div class="tag-promocao">PROMO</div>
                     <div class="item-img-placeholder">🍟</div>
-                    <h3>Batata Frita M</h3>
-                    <p class="price-original">De: R$ 12,00</p>
-                    <p class="price">Por: R$ 8,90</p>
+                    <h3>Batata Rústica</h3>
+                    <p class="description">Batatas cortadas à mão com casca, temperadas com lemon pepper e alecrim fresco.</p>
+                    <p class="price-original">De: R$ 18,00</p>
+                    <p class="price">Por: R$ 12,90</p>
+                    <p class="valido">Válido até: 30/06</p>
+                    <button class="btn-order">Aproveitar</button>
+                </div>
+
+                <div class="cardapio-item promocao-item">
+                    <div class="tag-promocao">PROMO</div>
+                    <div class="item-img-placeholder">🍦</div>
+                    <h3>Milkshake Banoffee</h3>
+                    <p class="description">Milkshake artesanal de 500ml de banana, doce de leite caseiro e chantilly.</p>
+                    <p class="price-original">De: R$ 16,00</p>
+                    <p class="price">Por: R$ 11,90</p>
+                    <p class="valido">Válido até: 30/06</p>
+                    <button class="btn-order">Aproveitar</button>
+                </div>
+
+                <div class="cardapio-item promocao-item">
+                    <div class="tag-promocao">PROMO</div>
+                    <div class="item-img-placeholder">🍔</div>
+                    <h3>Beco Burguer Single</h3>
+                    <p class="description">O clássico individual Beco Burguer saindo mais barato hoje.</p>
+                    <p class="price-original">De: R$ 22,00</p>
+                    <p class="price">Por: R$ 16,90</p>
                     <p class="valido">Válido até: 30/06</p>
                     <button class="btn-order">Aproveitar</button>
                 </div>
@@ -100,7 +104,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Lanchonete do Bairro. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Beco do Hambúrguer - Hamburgueria Artesanal. Todos os direitos reservados.</p>
     </footer>
 
     <script src="cardapio.js"></script>
