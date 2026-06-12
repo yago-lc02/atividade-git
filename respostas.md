@@ -327,3 +327,31 @@ git flow release finish 1.0.0 -m "Release 1.0.0"
 #### d) Saída do `git tag` e função de uma tag no GitFlow:
 *Saída do comando:* `1.0.0`
 *Função de uma tag no GitFlow:* Uma tag é um marcador permanente e imutável que aponta para um commit específico do histórico (geralmente commits de merge na branch `main`). Sua função no GitFlow é registrar de forma definitiva os marcos de lançamento do software (releases), permitindo que qualquer desenvolvedor acesse a versão exata do software em produção no futuro de maneira simples e inequívoca, garantindo a rastreabilidade e auditoria da versão.
+
+---
+
+### Questão 12: Ciclo de Hotfix: Corrigindo Bug em Produção
+
+#### a) Comando de inicialização e motivo de nascer da "main" e não da "develop":
+*Comando executado:*
+```bash
+git flow hotfix start correcao-titulo
+```
+*Por que nasce da main:* O hotfix serve para corrigir um erro crítico que está ativo em produção (cujo código é representado pela branch `main`). Iniciar o hotfix a partir da branch `develop` seria incorreto porque estaríamos trazendo códigos inacabados, experimentais e instáveis de novas funcionalidades (que ainda estão em desenvolvimento na `develop`) diretamente para produção, podendo introduzir novos bugs.
+
+#### b) Alterações efetuadas e commit de correção:
+O título de `index.html` foi corrigido de *"Lanchonete do Bairro"* para *"Lanchonete do Bairro - Oficial"*.
+*Commit realizado:* `fdcd4ce fix: corrige titulo da pagina principal`
+
+#### c) Branches nas quais o hotfix foi mesclado após a finalização:
+*Comando executado:*
+```bash
+git flow hotfix finish correcao-titulo -m "Hotfix 1.0.1"
+```
+*Branches que receberam o merge:* O hotfix foi integrado em duas ramificações:
+1. Na branch **`main`** (para corrigir imediatamente o código de produção).
+2. Na branch **`develop`** (back-merge para garantir que o bug não reapareça em futuros lançamentos).
+
+#### d) Número de versão correto segundo o Semantic Versioning (SemVer) e justificativa:
+*Número da versão:* **`1.0.1`**
+*Justificativa:* De acordo com o SemVer (`MAIOR.MENOR.CORREÇÃO`), incrementa-se o número de **CORREÇÃO (Patch)** quando realizamos correções de bugs de forma retrocompatível (ou seja, que não quebram o sistema nem adicionam novas funções). Como o hotfix apenas corrigiu a digitação incorreta do título da página principal, sem alterar a API ou inserir novas funcionalidades, a versão evolui de `1.0.0` para `1.0.1`.
